@@ -1,21 +1,13 @@
-let out = document.querySelector('#out')
-
-let [a, b, c] = document.querySelectorAll('input')
-
-let btn = document.querySelector('#check')
-let maxarr = [a, b, c].map(i => i.value)
-
-const cmpsides = (bestInt, others) => {
-  return Math.pow(bestInt, 2) == Math.pow(others[0], 2) + Math.pow(others[1], 2)
-}
-
-btn.addEventListener('click', count)
-
-function count(maxarr) {
-  let m = Math.max(maxarr)
-
-  out.value = cmpsides(
-    m,
-    [a, b, c].filter(i => i !== m)
-  )
-}
+var values = [];
+var inputs = document.querySelectorAll('input');
+var btn = document.querySelector('#check');
+var out = inputs[3];
+var count = function () {
+    inputs.forEach(function (e) { return values.push(+e.value); });
+    values.pop();
+    var biggest = Math.max.apply(Math, values);
+    var others = values.filter(function (i) { return i !== biggest; });
+    console.log(others, values, biggest);
+    out.value = "".concat(Math.pow(biggest, 2) == Math.pow(others[0], 2) + Math.pow(others[1], 2));
+};
+btn === null || btn === void 0 ? void 0 : btn.addEventListener('click', count);
