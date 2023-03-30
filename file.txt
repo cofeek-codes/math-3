@@ -1,2 +1,7 @@
 https://copr.fedorainfracloud.org/coprs/carlwgeorge/hyprland/
 https://www.if-not-true-then-false.com/2015/fedora-nvidia-guide/
+
+
+
+
+nano ~/.config/autostart/xfce4-wm.desktop
