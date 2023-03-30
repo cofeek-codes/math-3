@@ -1,0 +1,55 @@
+To launch picom compositor instead of the default compositor in Arch Linux, follow these steps:
+
+1. Install picom using the following command:
+
+```
+sudo pacman -S picom
+```
+
+2. Create a configuration file for picom by running the following command:
+
+```
+nano ~/.config/picom.conf
+```
+
+3. In the configuration file, add the following lines:
+
+```
+# Basic configuration
+backend = "glx";
+glx-no-stencil = true;
+vsync = true;
+
+# Opacity
+opacity-rule = [ "90:class_g = 'Firefox'" ];
+
+# Shadows
+shadow = true;
+shadow-radius = 10;
+shadow-offset-x = -15;
+shadow-offset-y = -15;
+shadow-opacity = 0.75;
+
+# Fading
+fade-in-step = 0.03;
+fade-out-step = 0.03;
+
+# Blur
+blur-method = "dual_kawase";
+blur-strength = 5;
+blur-background-exclude = [ "window_type = 'dock'", "window_type = 'desktop'" ];
+```
+
+4. Save and exit the configuration file.
+
+5. Open your i3 or other window manager configuration file and add the following line to launch picom at startup:
+
+```
+exec --no-startup-id picom -b --config ~/.config/picom.conf
+```
+
+6. Save and exit the configuration file.
+
+7. Restart your window manager or logout and login again to apply the changes.
+
+Now, picom should be launched instead of the default compositor in Arch Linux.
